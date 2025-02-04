@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap Two Numbers</title>
+    <script>
+        function swapNumbers() {
+            let a = parseInt(document.getElementById("num1").value);
+            let b = parseInt(document.getElementById("num2").value);
+
+            // Swapping without using a third variable (Addition & Subtraction)
+            a = a + b;
+            b = a - b;
+            a = a - b;
+
+            // Display the swapped values
+            document.getElementById("result").innerHTML = `After Swapping: A = ${a}, B = ${b}`;
+        }
+    </script>
+</head>
+<body>
+    <h2>Swap Two Numbers Without Using a Third Variable</h2>
+    
+    <label for="num1">Enter First Number:</label>
+    <input type="number" id="num1"><br><br>
+
+    <label for="num2">Enter Second Number:</label>
+    <input type="number" id="num2"><br><br>
+
+    <button onclick="swapNumbers()">Swap Numbers</button>
+
+    <p id="result"></p>
+</body>
+</html>
+
+
