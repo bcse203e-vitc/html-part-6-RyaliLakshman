@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Decimal to Binary</title>
+</head>
+<body>
+    <h1>Convert a Decimal Number to Binary</h1>
+    <p>Enter a decimal number:</p>
+    <label for="decimalInput">Decimal Number:</label>
+    <input type="number" id="decimalInput" placeholder="Enter a number"><br><br>
+    <button onclick="convertToBinary()">Convert to Binary</button>
+    <p id="result"></p>
+
+    <script>
+        // Function to convert a decimal number to binary
+        function decimalToBinary(num) {
+            if (num === 0) return "0"; // Handle edge case for 0
+            let binary = "";
+            while (num > 0) {
+                binary = (num % 2) + binary; // Append remainder to binary string
+                num = Math.floor(num / 2); // Update number by dividing it by 2
+            }
+            return binary;
+        }
+
+        // Function to get user input and display the result
+        function convertToBinary() {
+            const decimalInput = parseInt(document.getElementById("decimalInput").value); // Get the input value
+
+            if (isNaN(decimalInput) || decimalInput < 0) { // Validate input
+                document.getElementById("result").innerText = "Please enter a valid non-negative number.";
+                return;
+            }
+
+            const binaryResult = decimalToBinary(decimalInput); // Convert to binary
+            document.getElementById("result").innerText = `Binary representation of ${decimalInput} is: ${binaryResult}`;
+        }
+    </script>
+</body>
+</html>

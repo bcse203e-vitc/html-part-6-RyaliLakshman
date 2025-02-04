@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Frequency Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Count Character Occurrences</h2>
+    <label for="textInput">Enter a string:</label>
+    <input type="text" id="textInput" placeholder="e.g., hello">
+    <button onclick="countCharacters()">Count</button>
+
+    <h3>Output:</h3>
+    <p id="output"></p>
+
+    <script>
+        function countCharacters() {
+            let str = document.getElementById("textInput").value.trim();
+            let charCount = {};
+
+            // Count occurrences of each character
+            for (let char of str) {
+                charCount[char] = (charCount[char] || 0) + 1;
+            }
+
+            // Convert object to readable string format
+            let result = JSON.stringify(charCount, null, 2);
+
+            document.getElementById("output").innerText = "Character Frequency:\n" + result;
+        }
+    </script>
+
+</body>
+</html>

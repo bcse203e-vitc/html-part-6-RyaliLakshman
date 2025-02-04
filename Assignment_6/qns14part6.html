@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Pangram</title>
+</head>
+<body>
+    <h1>Check If a String is a Pangram</h1>
+    <p>Enter a sentence:</p>
+    <label for="inputString">Sentence:</label>
+    <input type="text" id="inputString"><br><br>
+    <button onclick="checkPangram()">Check Pangram</button>
+    <p id="result"></p>
+
+    <script>
+        // Function to check if a string is a pangram
+        function isPangram(sentence) {
+            const alphabet = "abcdefghijklmnopqrstuvwxyz"; // All letters in the alphabet
+            const lowerCaseSentence = sentence.toLowerCase(); // Convert sentence to lowercase
+
+            for (let char of alphabet) { // Check each letter in the alphabet
+                if (!lowerCaseSentence.includes(char)) {
+                    return false; // Return false if any letter is missing
+                }
+            }
+
+            return true; // If all letters are present, it's a pangram
+        }
+
+        // Function to get user input and display the result
+        function checkPangram() {
+            const sentence = document.getElementById("inputString").value.trim(); // Get user input
+
+            if (sentence === "") { // Validate input
+                document.getElementById("result").innerText = "Please enter a valid sentence.";
+                return;
+            }
+
+            if (isPangram(sentence)) {
+                document.getElementById("result").innerText = "✅ It is a pangram.";
+            } else {
+                document.getElementById("result").innerText = "❌ It is not a pangram.";
+            }
+        }
+    </script>
+</body>
+</html>

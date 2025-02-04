@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Missing Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Find the Missing Number</h2>
+    <label for="arrayInput">Enter sequence (comma-separated):</label>
+    <input type="text" id="arrayInput" placeholder="e.g., 1,2,3,5,6">
+    <button onclick="findMissingNumber()">Find</button>
+
+    <h3>Output:</h3>
+    <p id="output"></p>
+
+    <script>
+        function findMissingNumber() {
+            let input = document.getElementById("arrayInput").value;
+            let arr = input.split(',').map(Number); // Convert input to an array of numbers
+            
+            let n = arr.length + 1; // Since one number is missing, the original sequence length should be n
+            let totalSum = (n * (n + 1)) / 2; // Sum of first N natural numbers
+            let actualSum = arr.reduce((sum, num) => sum + num, 0); // Sum of given numbers
+
+            let missingNumber = totalSum - actualSum; // The missing number
+            
+            document.getElementById("output").innerText = "Missing Number: " + missingNumber;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Smallest & Second Largest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Find Second Smallest & Second Largest</h2>
+    <label for="arrayInput">Enter array elements (comma-separated):</label>
+    <input type="text" id="arrayInput" placeholder="e.g., 4,2,9,1,5,6">
+    <button onclick="findSecondValues()">Find</button>
+
+    <h3>Output:</h3>
+    <p id="output"></p>
+
+    <script>
+        function findSecondValues() {
+            let input = document.getElementById("arrayInput").value;
+            let arr = input.split(',').map(Number); // Convert input to an array of numbers
+            
+            if (arr.length < 2) {
+                document.getElementById("output").innerText = "Array must contain at least two distinct numbers.";
+                return;
+            }
+
+            // Remove duplicates and sort the array in ascending order
+            let uniqueArr = [...new Set(arr)].sort((a, b) => a - b);
+
+            if (uniqueArr.length < 2) {
+                document.getElementById("output").innerText = "Array must contain at least two distinct numbers.";
+                return;
+            }
+
+            let secondSmallest = uniqueArr[1];
+            let secondLargest = uniqueArr[uniqueArr.length - 2];
+
+            document.getElementById("output").innerText = 
+                "Second Smallest: " + secondSmallest + "\nSecond Largest: " + secondLargest;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Non-Repeating Character</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Find First Non-Repeating Character</h2>
+    <label for="textInput">Enter a string:</label>
+    <input type="text" id="textInput" placeholder="e.g., swiss">
+    <button onclick="findFirstNonRepeating()">Find</button>
+
+    <h3>Output:</h3>
+    <p id="output"></p>
+
+    <script>
+        function findFirstNonRepeating() {
+            let str = document.getElementById("textInput").value.trim();
+            let charCount = {};
+
+            // Count occurrences of each character
+            for (let char of str) {
+                charCount[char] = (charCount[char] || 0) + 1;
+            }
+
+            // Find the first character with count 1
+            for (let char of str) {
+                if (charCount[char] === 1) {
+                    document.getElementById("output").innerText = "First Non-Repeating Character: " + char;
+                    return;
+                }
+            }
+
+            document.getElementById("output").innerText = "No non-repeating character found.";
+        }
+    </script>
+
+</body>
+</html>
