@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse a Number</title>
+    <script>
+        function reverseNumber() {
+            let num = document.getElementById("number").value;
+
+            if (isNaN(num) || num.trim() === "") {
+                document.getElementById("result").innerHTML = "Please enter a valid number.";
+                return;
+            }
+
+            let reversedNum = parseInt(num.split("").reverse().join(""));
+            document.getElementById("result").innerHTML = `Reversed Number: ${reversedNum}`;
+        }
+    </script>
+</head>
+<body>
+    <h2>Reverse a Number</h2>
+
+    <label for="number">Enter a Number:</label>
+    <input type="text" id="number"><br><br>
+
+    <button onclick="reverseNumber()">Reverse</button>
+
+    <p id="result"></p>
+</body>
+</html>
